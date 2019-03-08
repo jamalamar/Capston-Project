@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 
+
 //Components
 import LoginPage from "../Components/LoginPage.js";
 
@@ -59,9 +60,7 @@ class SimpleModal extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-          
             <LoginPage style={getModalStyle()} className={classes.paper}/>
-          
         </Modal>
       </div>
     );
