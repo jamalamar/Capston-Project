@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Facebook from './fb-login.js';
+import Google from './google-login.js';
+
+
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +17,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+
 
 const styles = theme => ({
   main: {
@@ -58,6 +64,10 @@ function SignIn(props) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
+
+          <Facebook/>
+          <Google/>
+
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
