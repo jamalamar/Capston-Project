@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import SimpleModalWrapped from '../Components/modal.js'
+import MenuDrawer from '../Components/menu-drawer.js'
+
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,7 +20,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import SimpleModalWrapped from '../Components/modal.js'
 
 
 
@@ -90,7 +93,7 @@ const styles = theme => ({
   },
 });
 
-class PrimarySearchAppBar extends React.Component {
+class PrimarySearchAppBar extends Component {
   state = {
     anchorEl: null,
     mobileMoreAnchorEl: null,
@@ -170,9 +173,8 @@ class PrimarySearchAppBar extends React.Component {
         <AppBar position="static">
           <Toolbar>
 
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-              <MenuIcon />
-            </IconButton>
+
+            <MenuDrawer/>
 
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               Auction
