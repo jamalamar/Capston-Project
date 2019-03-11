@@ -7,8 +7,9 @@ class Facebook extends Component {
   render() {
 
     const responseFacebook = (response) => {
-      console.log(response);
+      this.props.login(response);
     }
+
 
     return (
 
@@ -16,7 +17,8 @@ class Facebook extends Component {
           appId=""
           autoLoad={false}
           fields="name,email,picture"
-          callback={responseFacebook} />
+          callback={responseFacebook} 
+          type="submit"/>
     );
   }
 }

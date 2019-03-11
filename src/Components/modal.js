@@ -59,7 +59,7 @@ class SimpleModal extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-            <LoginPage style={getModalStyle()} className={classes.paper}/>
+            <LoginPage style={getModalStyle()} className={classes.paper} login={this.props.login}/>
         </Modal>
       </div>
     );

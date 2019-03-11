@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SimpleModalWrapped from '../Components/modal.js'
+import LoginModal from '../Components/modal.js'
 import MenuDrawer from '../Components/menu-drawer.js'
 
 
@@ -210,7 +210,7 @@ class PrimarySearchAppBar extends Component {
                 </Badge>
               </IconButton>
 
-              <SimpleModalWrapped/>
+              <LoginModal login={this.props.login}/>
 
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
