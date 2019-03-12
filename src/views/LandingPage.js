@@ -1,24 +1,37 @@
-import React, { Component } from 'react'
-import NavBar from '../Components/navbar.js'
-import Title from '../Components/title-with-buttons.js'
-import Carousel from '../Components/carousel.js'
-import Album from '../Components/album.js'
+import React, { Component } from 'react';
+
+import Carousel from '../Components/carousel.js';
+import Album from '../Components/album.js';
+
 
 
 //Style
 const backgroundGradient = {background: '#ffffff'}
+const header = {
+				display: 'flex',
+				margin: 0,
+				'justify-content': 'center',
+				'font-family': 'Sniglet, cursive',
+				'font-size': '55px',
+				color: '#ffffff',
+				background: '#FF416C',  /* fallback for old browsers */
+				background: '-webkit-linear-gradient(to right, #FF4B2B, #FF416C)',  /* Chrome 10-25, Safari 5.1-6 */
+				background: 'linear-gradient(to right, #FF4B2B, #FF416C)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+				 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+			}
 						
 
+				// <h1 style={header}>Auction Website</h1>
 
 
 class LandingPage extends Component {
 	render(){
 		return(
-			<div style={backgroundGradient}>
+			<div style={backgroundGradient}>				
 
-				<NavBar handleLogin={this.props.handleLogin} logged={this.props.logged} response={this.props.response} />	
-				
 				<Carousel/>
+				
 				<Album items={this.props.items}/>
 
 			</div>

@@ -18,7 +18,7 @@ class ResponsiveCarousel extends Component {
         pauseOnHover={false}
         heightMode={'max'}
         style={{margin: 'auto',
-                width: '70%',                
+                width: '65%',                
                 padding: '10px'}}
         >
         

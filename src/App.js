@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch } from "react-router-dom";
-import FacebookLogin from 'react-facebook-login';
+import { Router, Route, Switch} from "react-router-dom";
 
 
 // import Components from "views/Components.js";
 import LandingPage from "./views/LandingPage.js";
 import ProfilePage from "./views/ProfilePage.js";
+import ShopPage from "./views/ShopPage.js";
+import NavBar from './Components/navbar.js';
+import Footer from './Components/footer.js';
 
 var hist = createBrowserHistory();
 
@@ -51,12 +53,18 @@ class App extends Component{
 
 	render(){
 		return(
-		  <Router history={hist}>
-		    <Switch>
-		      <Route path="/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
-		      <Route path="/profile" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
-		    </Switch>
-		  </Router>
+			<div>
+			  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response} />
+			  <Router history={hist}>
+			    <Switch>
+			      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
+			      <Route path="/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
+			      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
+			    </Switch>
+			  </Router>
+
+			  <Footer />
+			 </div>
 		)
 	}
 }

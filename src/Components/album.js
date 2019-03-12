@@ -58,13 +58,6 @@ const styles = theme => ({
     flexGrow: 1,
     height: '150px',
     'overflow': 'auto'
-  },
-  footer: {
-    backgroundColor: theme.palette.common.black,
-    padding: theme.spacing.unit * 6
-  },
-  footerText: {
-    color: theme.palette.common.white,
   }
 });
 
@@ -73,13 +66,6 @@ const styles = theme => ({
 function Album(props) {
   const { classes } = props;
   
-  // const itemsComposed = props.items.map((item, index)=>{
-  //     return(
-  //       <a key={index} href={item.hdurl} target='_blank'>
-  //         <img src={item.url} alt={item.media_type} className='ExploreImage'/>
-  //       </a>
-  //     )
-  //   })
 const cards = props.items;
 
   return (
@@ -119,16 +105,6 @@ const cards = props.items;
           </Grid>
         </div>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom className={classes.footerText}>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="left" component="p" className={classes.footerText}>
-          Something here to give the footer a purpose!
-        </Typography>
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
