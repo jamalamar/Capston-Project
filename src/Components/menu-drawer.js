@@ -59,7 +59,7 @@ class SwipeableTemporaryDrawer extends Component {
       <div>
 
       <MenuItem color="inherit">
-          <MenuIcon onClick={this.toggleDrawer('left', true)} className={classes.menuButton} color="inherit" aria-label="Open drawer"/>
+          <MenuIcon onClick={this.toggleDrawer('left', true)} className={classes.menuButton} color="secondary" aria-label="Open drawer"/>
       </MenuItem>
 
         <SwipeableDrawer
