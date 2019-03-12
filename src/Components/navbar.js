@@ -92,7 +92,7 @@ const styles = theme => ({
     },
   },
   appBar: {
-    backgroundColor: theme.palette.common.black
+    background: theme.palette.common.black,
   }
 });
 

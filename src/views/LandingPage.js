@@ -5,11 +5,16 @@ import Carousel from '../Components/carousel.js'
 import Album from '../Components/album.js'
 
 
+//Style
+const backgroundGradient = {background: '#ffffff'}
+						
+
+
 
 class LandingPage extends Component {
 	render(){
 		return(
-			<div style={{"background-color": '#ffffff'}}>
+			<div style={backgroundGradient}>
 
 				<NavBar handleLogin={this.props.handleLogin} logged={this.props.logged} response={this.props.response} />	
 				

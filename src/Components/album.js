@@ -46,17 +46,24 @@ const styles = theme => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    background: '#aeaeab', /* fallback for old browsers */
+    background: '-webkit-linear-gradient(to top, #efefef, #ffffff)', /* Chrome 10-25, Safari 5.1-6 */
+    background: 'linear-gradient(to top, #efefef, #ffffff)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    padding: '26%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 6,
+    backgroundColor: theme.palette.common.black,
+    padding: theme.spacing.unit * 6
   },
+  footerText: {
+    color: theme.palette.common.white,
+  }
 });
 
 
@@ -112,10 +119,10 @@ const cards = props.items;
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant="h6" align="center" gutterBottom className={classes.footerText}>
           Footer
         </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        <Typography variant="subtitle1" align="left" component="p" className={classes.footerText}>
           Something here to give the footer a purpose!
         </Typography>
       </footer>
