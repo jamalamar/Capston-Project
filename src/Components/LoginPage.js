@@ -65,8 +65,8 @@ function SignIn(props) {
           Sign in
         </Typography>
 
-          <Facebook login={props.login}/>
-          <Google login={props.login}/>
+          <Facebook handleLogin={props.handleLogin}/>
+          <Google handleLogin={props.handleLogin}/>
 
         <form className={classes.form}>
           <FormControl margin="normal" required fullWidth>

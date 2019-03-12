@@ -7,7 +7,7 @@ class Facebook extends Component {
   render() {
 
     const responseFacebook = (response) => {
-      this.props.login(response);
+      this.props.handleLogin(response);
     }
 
 

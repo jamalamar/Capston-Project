@@ -14,8 +14,12 @@ class ResponsiveCarousel extends Component {
         autoplay={true} 
         speed={1200} 
         swiping={true} 
+        wrapAround={true}
         pauseOnHover={false}
         heightMode={'max'}
+        style={{margin: 'auto',
+                width: '70%',                
+                padding: '10px'}}
         >
         
         <img src={pic1}/>

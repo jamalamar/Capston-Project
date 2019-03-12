@@ -13,39 +13,48 @@ var hist = createBrowserHistory();
 class App extends Component{
 
 	state = {
-		login: false,
-		response: ''
+		logged: false,
+		response: '',
+		items: []
 
 	}
 
-		login = (response)=>{
-			this.setState({
-				response: response
-			})
-		}
+
+	handleLogin = (response)=>{
+		this.setState({
+			logged: true,
+			response: response
+		})
+	}
 
 
-  //   login = (accesToken, id, name, email, picture) => {
-  //     console.log(this)
-  //     this.setState({
-  //       logged: true,
-  //       accesToken: accesToken,
-  //       id: id,
-		// name: name,
-		// email: email,
-		// picture: picture,
+  getItems = async () => {
+  try{
+    const items = await fetch('http://localhost:8080/inventory');
+    const itemsJson = await items.json();
+      this.setState({
+        items: itemsJson,
+      });
+      return itemsJson;
+  
+  }catch (error) {
+        console.log(error)
+        return error
+    }
+  }
 
-  //   })
-  // }
-
+     componentDidMount(){
+     this.getItems()
+      .then((data) => console.log(data, ' ...from SQL databse'));
+    }
 
 
 	render(){
 		return(
 		  <Router history={hist}>
 		    <Switch>
-		      <Route path="/" render={(props)=> <LandingPage login={this.login}/>} />
-		      <Route path="/profile" render={(props)=> <ProfilePage/>} />
+		      <Route path="/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
+		      <Route path="/profile" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
 		    </Switch>
 		  </Router>
 		)

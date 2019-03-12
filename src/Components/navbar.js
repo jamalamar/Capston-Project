@@ -91,6 +91,9 @@ const styles = theme => ({
       display: 'none',
     },
   },
+  appBar: {
+    backgroundColor: theme.palette.common.black
+  }
 });
 
 class PrimarySearchAppBar extends Component {
@@ -170,7 +173,7 @@ class PrimarySearchAppBar extends Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" className={classes.appBar}>
           <Toolbar>
 
 
@@ -210,16 +213,16 @@ class PrimarySearchAppBar extends Component {
                 </Badge>
               </IconButton>
 
-              <LoginModal login={this.props.login}/>
-
-              <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
+              {this.props.logged ? 
+                <IconButton 
+                  aria-owns={isMenuOpen ? 'material-appbar' : undefined} 
+                  aria-haspopup="true" 
+                  onClick={this.handleProfileMenuOpen} 
+                  color="inherit">
                 <AccountCircle />
-              </IconButton>
+                </IconButton>
+                : <LoginModal handleLogin={this.props.handleLogin}/>}
+                                
 
             </div>
 

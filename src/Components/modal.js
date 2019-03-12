@@ -52,14 +52,21 @@ class SimpleModal extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.handleOpen}>Login</Button>
+      <Button 
+        variant="contained"  
+        color="secondary"
+        className={classes.button} 
+        onClick={this.handleOpen}
+      >
+      Login
+      </Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={this.state.open}
           onClose={this.handleClose}
         >
-            <LoginPage style={getModalStyle()} className={classes.paper} login={this.props.login}/>
+            <LoginPage style={getModalStyle()} className={classes.paper} handleLogin={this.props.handleLogin}/>
         </Modal>
       </div>
     );

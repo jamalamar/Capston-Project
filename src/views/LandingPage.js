@@ -9,12 +9,12 @@ import Album from '../Components/album.js'
 class LandingPage extends Component {
 	render(){
 		return(
-			<div>
+			<div style={{"background-color": '#ffffff'}}>
 
-				<NavBar login={this.props.login}/>	
+				<NavBar handleLogin={this.props.handleLogin} logged={this.props.logged} response={this.props.response} />	
 				
 				<Carousel/>
-				<Album/>
+				<Album items={this.props.items}/>
 
 			</div>
 		)

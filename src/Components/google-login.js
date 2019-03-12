@@ -6,7 +6,7 @@ import GoogleLogin from 'react-google-login';
   render() {
 
     const responseGoogle = (response) => {
-      console.log(response);
+      this.props.handleLogin(response);
     }
 
     return (
