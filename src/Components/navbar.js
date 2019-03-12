@@ -219,8 +219,8 @@ class PrimarySearchAppBar extends Component {
                   aria-haspopup="true" 
                   onClick={this.handleProfileMenuOpen} 
                   color="inherit">
-                <AccountCircle />
-                </IconButton>
+                {this.props.response.picture.data.url ? <img src={this.props.response.picture.data.url}></img> : <AccountCircle />}
+                  </IconButton>
                 : <LoginModal handleLogin={this.props.handleLogin}/>}
                                 
 
