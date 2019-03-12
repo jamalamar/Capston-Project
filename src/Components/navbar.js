@@ -14,12 +14,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Icon from '@material-ui/core/Icon';
 
 
 
@@ -149,10 +149,10 @@ class PrimarySearchAppBar extends Component {
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
-              <MailIcon />
+              <Icon>money</Icon>
             </Badge>
           </IconButton>
-          <p>Messages</p>
+          <p>Buy Tickets</p>
         </MenuItem>
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
@@ -163,10 +163,18 @@ class PrimarySearchAppBar extends Component {
           <p>Notifications</p>
         </MenuItem>
         <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
+          
+            {this.props.logged ? 
+              <IconButton 
+                aria-owns={isMenuOpen ? 'material-appbar' : undefined} 
+                aria-haspopup="true" 
+                onClick={this.handleProfileMenuOpen} 
+                color="inherit">
+              {this.props.response.picture.data.url ? <img src={this.props.response.picture.data.url}></img> : <AccountCircle />}
+                </IconButton>
+              : <LoginModal handleLogin={this.props.handleLogin}/>}
+          
+          {this.props.logged ? <p>Profile</p> : null}
         </MenuItem>
       </Menu>
     );
@@ -203,7 +211,7 @@ class PrimarySearchAppBar extends Component {
 
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
+                  <Icon>money</Icon>
                 </Badge>
               </IconButton>
 

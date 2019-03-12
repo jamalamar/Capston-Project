@@ -57,6 +57,7 @@ const styles = theme => ({
   cardContent: {
     flexGrow: 1,
     height: '150px',
+    'overflow': 'auto'
   },
   footer: {
     backgroundColor: theme.palette.common.black,
