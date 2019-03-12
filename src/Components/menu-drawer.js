@@ -10,8 +10,10 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import ComputerIcon from '@material-ui/icons/Computer';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Icon from '@material-ui/core/Icon';
 
 const styles = {
   list: {
@@ -36,19 +38,39 @@ class SwipeableTemporaryDrawer extends Component {
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {[{name: 'Top',
+            icon: 'star_border'},
+            {name: 'Trending',
+            icon: 'trending_up'},
+            {name: 'New',
+            icon: 'fiber_new'},
+            {name: 'Upcoming',
+            icon: 'calendar_today'}].map((item, index) => (
+            <ListItem button key={item.name}>
+              <Icon>{item.icon}</Icon>
+              <ListItemText primary={item.name} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          {[
+            {name: 'Electronics',
+            icon: 'computer'},
+            {name: 'Home',
+            icon: 'home'},
+            {name: 'Kitchen',
+            icon: 'kitchen'},
+            {name: 'Clothing',
+            icon: 'wc'},
+            {name: 'Accesories',
+            icon: 'beach_access'},
+            {name: 'Automobile',
+            icon: 'commute'}]
+            .map((item, index) => (
+            <ListItem button key={item.name}>
+              <Icon>{item.icon}</Icon>
+              <ListItemText primary={item.name} />
             </ListItem>
           ))}
         </List>

@@ -180,7 +180,7 @@ class PrimarySearchAppBar extends Component {
             <MenuDrawer/>
 
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Auction
+              Auction WS
             </Typography>
 
             <div className={classes.search}>
