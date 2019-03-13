@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Sold from '../assets/sold.png'
 
+
+const imgStyle = {
+  width: '150px', 
+  height: '150px',
+}
 
 
 class CountDown extends Component {
@@ -67,9 +73,21 @@ class CountDown extends Component {
 
     return(
       <div style={{'font-size': '25px'}}>
-        ${this.state.price}
-        {this.timer == 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={this.newBid}>Add Bid</Button>}
-        {this.state.time.s}
+        <div style={{color: 'green'}}>
+            ${this.state.price}
+        </div>
+          
+          {
+            this.state.time.s == 0 ? <img src={Sold} style={imgStyle}/> : 
+            <div>
+
+                <p>{this.state.time.s}</p>
+              <div>
+                {this.timer == 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={this.newBid}>Add Bid</Button>}
+              </div>
+
+            </div>
+          }
       </div>
     );
   }

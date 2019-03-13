@@ -61,27 +61,34 @@ const styles = theme => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    // background: '#aeaeab', /* fallback for old browsers */
-    // background: '-webkit-linear-gradient(to top, #efefef, #ffffff)',  /*Chrome 10-25, Safari 5.1-6 */
-    // background: 'linear-gradient(to top, #efefef, #ffffff)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: '#aeaeab', /* fallback for old browsers */
+    background: '-webkit-linear-gradient(to top, #efefef, #ffffff)',  /*Chrome 10-25, Safari 5.1-6 */
+    background: 'linear-gradient(to top, #efefef, #ffffff)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             
   },
   cardMedia: {
     padding: '26%', // 16:9
   },
-  cardContent: {
+  cardTitle: {
+    display: 'flex',
+    'flexDirection': 'column',
+    alignItems: 'center',
     flexGrow: 1,
-    height: '150px',
     'overflow': 'auto'
   },
-    paper: {
-      position: 'absolute',
-      width: theme.spacing.unit * 120,
-      backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[10],
-      padding: theme.spacing.unit * 4,
-      outline: 'none',
-      borderRadius: 10,
+  cardContent: {
+    display: 'flex',
+    'flexDirection': 'column',
+    alignItems: 'center',
+  },
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 120,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[10],
+    padding: theme.spacing.unit * 4,
+    outline: 'none',
+    borderRadius: 10,
   },
   modalGrid: {
     display: 'flex',
@@ -92,6 +99,10 @@ const styles = theme => ({
     alignItems: 'center',
     backgroundColor: 'rgba(200,200,200,0.1)', 
     width: '50%', 
+  },
+  countdown: {
+    'flexDirection': 'column',
+    alignItems: 'flex-start',
   }
 });
 
@@ -105,6 +116,7 @@ const { classes } = this.props;
 
 const cards = this.props.items;
 
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -113,7 +125,7 @@ const cards = this.props.items;
           {/* End hero unit */}
           <Grid container spacing={40}>
             {cards.map((item, index) => {
-              
+
               return(
               
               <Grid item key={index} sm={6} md={4} lg={3}>
@@ -125,11 +137,15 @@ const cards = this.props.items;
                     image={item.item_img}
                     title={item.item_name}/>
 
-                  <CardContent className={classes.cardContent}>
+                  <CardContent>
                     
-                    <Typography gutterBottom variant="h5" component="h2">{item.item_short}</Typography>                    
-                    <CountDown/>
-
+                    <Typography gutterBottom variant="h5" component="h2" className={classes.cardTitle}>
+                      {item.item_short}
+                    </Typography>
+                    
+                    <div className={classes.cardContent}>                    
+                      <CountDown/>
+                    </div>
                   </CardContent>
 
                   <CardActions>                    
