@@ -17,15 +17,9 @@ import CountDown from './countdown.js'
 
 
 
-
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -81,31 +75,29 @@ const styles = theme => ({
     'overflow': 'auto'
   },
     paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 120,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[10],
-    padding: theme.spacing.unit * 4,
-    outline: 'none',
-    borderRadius: 10,
+      position: 'absolute',
+      width: theme.spacing.unit * 120,
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[10],
+      padding: theme.spacing.unit * 4,
+      outline: 'none',
+      borderRadius: 10,
   },
+  modalGrid: {
+    display: 'flex',
+    'justify-content': 'space-between'
+  },
+  modalDescription: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: 'rgba(200,200,200,0.1)', 
+    width: '50%', 
+  }
 });
 
 
 
 class Album extends Component {
-  state = {
-    open: false
-  };
-
-  handleOpen = () => {
-    this.setState({ open: true })
-  }
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-  
   
 render() {
   
@@ -134,21 +126,33 @@ const cards = this.props.items;
                     title={item.item_name}/>
 
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">{item.item_short}</Typography>
-                    <Typography>{item.item_name}</Typography>
+                    
+                    <Typography gutterBottom variant="h5" component="h2">{item.item_short}</Typography>                    
+                    <CountDown/>
+
                   </CardContent>
 
-                  <CardActions>
-                    <ItemModal>
-                    <Grid item>
+                  <CardActions>                    
+                    <ItemModal>                    
                       <div style={getModalStyle()} className={classes.paper}>
-                        <Typography variant="h5" component="h3">{item.item_name}</Typography>
-                        <div style={{overflow: 'auto'}}>{item.item_info}</div>
-                      </div>
-                    </Grid>
+
+                        <Typography variant="h5" component="h3">{item.item_name}</Typography>                        
+                      
+                        <Grid className={classes.modalGrid}>
+                          <div>
+                            <img src={item.item_img} style={{width: '250px', height: '250px'}}/>                                                
+                            <Typography variant="h6" component="h4">Value: ${item.item_price}</Typography>                        
+                          </div>
+
+                          <div className={classes.modalDescription}>
+                            {item.item_info}
+                          </div>
+                        </Grid>
+
+                      </div>                    
                     </ItemModal>
+
                     <Button size="small" color="primary">Enter</Button>
-                    <CountDown/>
                   </CardActions>
                 
                 </Card>

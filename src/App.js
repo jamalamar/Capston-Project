@@ -16,6 +16,7 @@ class App extends Component{
 
 	state = {
 		logged: false,
+		tokens: 0,
 		response: '',
 		items: []
 
