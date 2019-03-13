@@ -95,8 +95,7 @@ const styles = theme => ({
 
 class Album extends Component {
   state = {
-    open: false,
-    index: 0
+    open: false
   };
 
   handleOpen = () => {
@@ -140,23 +139,15 @@ const cards = this.props.items;
                   </CardContent>
 
                   <CardActions>
-                    <Button size="small" color="primary" onClick={this.handleOpen}>View</Button>
+                    <ItemModal>
+                      <p style={getModalStyle()} className={classes.paper}>{item.item_name}</p>
+                    </ItemModal>
                     <Button size="small" color="primary">Enter</Button>
                     <CountDown/>
                   </CardActions>
                 
                 </Card>
 
-                <Modal key={index}
-
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={this.state.open}
-                onClose={this.handleClose}> 
-
-                  <div style={getModalStyle()} className={classes.paper}>{item.item_name}</div>
-              
-                </Modal>
 
               </Grid>
 
