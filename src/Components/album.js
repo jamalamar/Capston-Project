@@ -10,7 +10,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
 
 
 import ItemModal from './item-modal.js'
@@ -68,9 +67,9 @@ const styles = theme => ({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    background: '#aeaeab', /* fallback for old browsers */
-    background: '-webkit-linear-gradient(to top, #efefef, #ffffff)', /* Chrome 10-25, Safari 5.1-6 */
-    background: 'linear-gradient(to top, #efefef, #ffffff)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    // background: '#aeaeab', /* fallback for old browsers */
+    // background: '-webkit-linear-gradient(to top, #efefef, #ffffff)',  /*Chrome 10-25, Safari 5.1-6 */
+    // background: 'linear-gradient(to top, #efefef, #ffffff)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             
   },
   cardMedia: {
@@ -83,11 +82,12 @@ const styles = theme => ({
   },
     paper: {
     position: 'absolute',
-    width: theme.spacing.unit * 50,
+    width: theme.spacing.unit * 120,
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
+    boxShadow: theme.shadows[10],
     padding: theme.spacing.unit * 4,
     outline: 'none',
+    borderRadius: 10,
   },
 });
 
@@ -140,7 +140,12 @@ const cards = this.props.items;
 
                   <CardActions>
                     <ItemModal>
-                      <p style={getModalStyle()} className={classes.paper}>{item.item_name}</p>
+                    <Grid item>
+                      <div style={getModalStyle()} className={classes.paper}>
+                        <Typography variant="h5" component="h3">{item.item_name}</Typography>
+                        <div style={{overflow: 'auto'}}>{item.item_info}</div>
+                      </div>
+                    </Grid>
                     </ItemModal>
                     <Button size="small" color="primary">Enter</Button>
                     <CountDown/>

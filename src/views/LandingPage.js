@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Carousel from '../Components/carousel.js';
 import Album from '../Components/album.js';
+import GridList from '../Components/grid-list.js';
 
 
 
@@ -11,18 +12,21 @@ const header = {
 				display: 'flex',
 				margin: 0,
 				'justify-content': 'center',
-				'font-family': 'Sniglet, cursive',
+				// 'font-family': 'Sniglet, cursive',
 				'font-size': '55px',
 				color: '#ffffff',
 				background: '#FF416C',  /* fallback for old browsers */
 				background: '-webkit-linear-gradient(to right, #FF4B2B, #FF416C)',  /* Chrome 10-25, Safari 5.1-6 */
 				background: 'linear-gradient(to right, #FF4B2B, #FF416C)', /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 				 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
 			}
+const gridList = {
+	
+	display: 'flex',
+	'justify-content': 'center',
+}
 						
 
-				// <h1 style={header}>Auction Website</h1>
 
 
 class LandingPage extends Component {
@@ -30,9 +34,15 @@ class LandingPage extends Component {
 		return(
 			<div style={backgroundGradient}>				
 
-				<Carousel/>
+				<h1 style={header}>Auction Website</h1>
 				
-				<Album items={this.props.items}/>
+				<div style={gridList}>
+					<GridList items={this.props.items}/>
+				</div>
+				
+					<Album items={this.props.items} />
+
+				<Carousel/>
 
 			</div>
 		)
