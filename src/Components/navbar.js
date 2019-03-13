@@ -93,6 +93,20 @@ const styles = theme => ({
   },
   appBar: {
     background: theme.palette.common.black,
+  },
+  linkHome: {
+    'text-decoration': 'inherit',
+    color: 'inherit',
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+  },
+  linkShop: {
+    'text-decoration': 'inherit',
+    color: 'inherit',
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
   }
 });
 
@@ -147,13 +161,15 @@ class PrimarySearchAppBar extends Component {
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMobileMenuClose}>
+          
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <Icon>money</Icon>
             </Badge>
           </IconButton>
-          <p>Buy Tickets</p>
+          <a href='/shop' className={classes.linkShop}>Buy Tickets</a>
         </MenuItem>
+        
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
             <Badge badgeContent={11} color="secondary">
@@ -187,9 +203,9 @@ class PrimarySearchAppBar extends Component {
 
             <MenuDrawer/>
 
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Company Name
-            </Typography>
+            <a href='/home' className={classes.linkHome}>
+              <Typography className={classes.title} variant="h6" color="inherit" noWrap>Auction WS</Typography>
+            </a>
 
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -209,12 +225,14 @@ class PrimarySearchAppBar extends Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
 
+              <a href='/shop' className={classes.linkShop}>
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <Icon>money</Icon>
                 </Badge>
               </IconButton>
-
+              </a>
+              
               <IconButton color="inherit">
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
