@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import LoginModal from '../Components/modal.js'
+import LoginModal from '../Components/login-modal.js'
 import MenuDrawer from '../Components/menu-drawer.js'
 
 
@@ -188,7 +188,7 @@ class PrimarySearchAppBar extends Component {
             <MenuDrawer/>
 
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Auction WS
+              Company Name
             </Typography>
 
             <div className={classes.search}>

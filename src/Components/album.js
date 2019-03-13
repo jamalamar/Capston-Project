@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
@@ -10,11 +10,33 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+
+
+import ItemModal from './item-modal.js'
+import CountDown from './countdown.js'
+
+
+
+
+
+function rand() {
+  return Math.round(Math.random() * 20) - 10;
+}
+
+function getModalStyle() {
+  const top = 50 + rand();
+  const left = 50 + rand();
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
 
 const styles = theme => ({
-  appBar: {
-    position: 'relative',
-  },
   icon: {
     marginRight: theme.spacing.unit * 2,
   },
@@ -58,15 +80,39 @@ const styles = theme => ({
     flexGrow: 1,
     height: '150px',
     'overflow': 'auto'
-  }
+  },
+    paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: 'none',
+  },
 });
 
 
 
-function Album(props) {
-  const { classes } = props;
+class Album extends Component {
+  state = {
+    open: false,
+    index: 0
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true })
+  }
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
   
-const cards = props.items;
+  
+render() {
+  
+const { classes } = this.props;
+
+const cards = this.props.items;
 
   return (
     <React.Fragment>
@@ -75,42 +121,61 @@ const cards = props.items;
         <div className={classNames(classes.layout, classes.cardGrid)}>
           {/* End hero unit */}
           <Grid container spacing={40}>
-            {cards.map((item, index) => (
+            {cards.map((item, index) => {
+              
+              return(
+              
               <Grid item key={index} sm={6} md={4} lg={3}>
+                
                 <Card className={classes.card}>
+                  
                   <CardMedia
                     className={classes.cardMedia}
                     image={item.item_img}
-                    title={item.item_name}
-                  />
+                    title={item.item_name}/>
+
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {item.item_short}
-                    </Typography>
-                    <Typography>
-                      {item.item_name}
-                    </Typography>
+                    <Typography gutterBottom variant="h5" component="h2">{item.item_short}</Typography>
+                    <Typography>{item.item_name}</Typography>
                   </CardContent>
+
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Enter
-                    </Button>
+                    <Button size="small" color="primary" onClick={this.handleOpen}>View</Button>
+                    <Button size="small" color="primary">Enter</Button>
+                    <CountDown/>
                   </CardActions>
+                
                 </Card>
+
+                <Modal key={index}
+
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={this.state.open}
+                onClose={this.handleClose}> 
+
+                  <div style={getModalStyle()} className={classes.paper}>{item.item_name}</div>
+              
+                </Modal>
+
               </Grid>
-            ))}
+
+            )})}
+
           </Grid>
         </div>
       </main>
     </React.Fragment>
   );
-}
+}}
 
 Album.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Album);
+
+const AlbumWrapped = withStyles(styles)(Album)
+
+export default AlbumWrapped;
+
+
