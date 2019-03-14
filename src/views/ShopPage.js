@@ -1,4 +1,6 @@
 import React from 'react';
+import { Router, Route, Switch, Link } from "react-router-dom";
+
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -147,9 +149,9 @@ function Pricing(props) {
                   ))}
                 </CardContent>
                 <CardActions className={classes.cardActions}>
-                  <a href="/checkout"><Button fullWidth variant={tier.buttonVariant} color="primary">
+                  <Link to="/checkout"><Button fullWidth variant={tier.buttonVariant} color="primary">
                     {tier.buttonText}
-                  </Button></a>
+                  </Button></Link>
                 </CardActions>
               </Card>
             </Grid>

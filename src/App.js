@@ -55,19 +55,20 @@ class App extends Component{
 
 	render(){
 		return(
-			<div>
-			  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response} />
 			  <Router history={hist}>
+			<>
 			    <Switch>
-			      <Route path="/checkout/" render={(props)=> <Checkout logged={this.state.logged} response={this.state.response} />} />
-			      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
-			      <Route path="/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
-			      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
-			    </Switch>
-			  </Router>
+			  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response}>
 
+			      <Route exact path="/home/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
+			      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
+			      <Route path="/checkout/" render={(props)=> <Checkout logged={this.state.logged} response={this.state.response} />} />
+			      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
+				    </NavBar>
+			    </Switch>
 			  <Footer />
-			 </div>
+			  </>
+			  </Router>
 		)
 	}
 }

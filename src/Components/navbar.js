@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Router, Route, Switch, Link } from "react-router-dom";
 import LoginModal from '../Components/login-modal.js'
 import MenuDrawer from '../Components/menu-drawer.js'
+import Avatar from '../Components/avatar.js'
 
 
 import AppBar from '@material-ui/core/AppBar';
@@ -167,7 +169,7 @@ class PrimarySearchAppBar extends Component {
               <Icon>money</Icon>
             </Badge>
           </IconButton>
-          <a href='/shop' className={classes.linkShop}>Buy Tickets</a>
+          <Link to='/shop' className={classes.linkShop}>Buy Tickets</Link>
         </MenuItem>
         
         <MenuItem onClick={this.handleMobileMenuClose}>
@@ -186,7 +188,7 @@ class PrimarySearchAppBar extends Component {
                 aria-haspopup="true" 
                 onClick={this.handleProfileMenuOpen} 
                 color="inherit">
-              {this.props.response.picture.data.url ? <img src={this.props.response.picture.data.url}></img> : <AccountCircle />}
+              {this.props.response.picture.data.url ? <Avatar response={this.props.response}/> : <AccountCircle />}
                 </IconButton>
               : <LoginModal handleLogin={this.props.handleLogin}/>}
           
@@ -196,6 +198,7 @@ class PrimarySearchAppBar extends Component {
     );
 
     return (
+      
       <div className={classes.root}>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
@@ -203,9 +206,9 @@ class PrimarySearchAppBar extends Component {
 
             <MenuDrawer/>
 
-            <a href='/home' className={classes.linkHome}>
+            <Link to='/home' className={classes.linkHome}>
               <Typography className={classes.title} variant="h6" color="inherit" noWrap>Auction WS</Typography>
-            </a>
+            </Link>
 
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -225,13 +228,13 @@ class PrimarySearchAppBar extends Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
 
-              <a href='/shop' className={classes.linkShop}>
+              <Link to='/shop' className={classes.linkShop}>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={0} color="secondary">
                   <Icon>money</Icon>
                 </Badge>
               </IconButton>
-              </a>
+              </Link>
               
               <IconButton color="inherit">
                 <Badge badgeContent={17} color="secondary">
@@ -245,7 +248,7 @@ class PrimarySearchAppBar extends Component {
                   aria-haspopup="true" 
                   onClick={this.handleProfileMenuOpen} 
                   color="inherit">
-                {this.props.response.picture.data.url ? <img src={this.props.response.picture.data.url}></img> : <AccountCircle />}
+                {this.props.response.picture.data.url ? <Avatar response={this.props.response}/> : <AccountCircle />}
                   </IconButton>
                 : <LoginModal handleLogin={this.props.handleLogin}/>}
                                 
@@ -262,7 +265,9 @@ class PrimarySearchAppBar extends Component {
         </AppBar>
         {renderMenu}
         {renderMobileMenu}
+        {this.props.children}
       </div>
+      
     );
   }
 }
