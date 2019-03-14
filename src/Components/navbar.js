@@ -228,6 +228,14 @@ class PrimarySearchAppBar extends Component {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
 
+            <div style={{paddingRight: '30px'}}>
+            {this.props.logged ? <p>Hello, {this.props.response.name}!</p> : null}
+            </div>
+
+            <div style={{paddingRight: '30px'}}>
+            {this.props.logged ? <p><Icon>flash_on</Icon>{this.props.tokens}</p> : null}
+            </div>
+
               <Link to='/shop' className={classes.linkShop}>
               <IconButton color="inherit">
                 <Badge badgeContent={0} color="secondary">

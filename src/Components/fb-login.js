@@ -10,7 +10,6 @@ class Facebook extends Component {
       this.props.handleLogin(response);
     }
 
-
     return (
 
         <FacebookLogin

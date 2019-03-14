@@ -109,12 +109,36 @@ const styles = theme => ({
 
 
 class Album extends Component {
+  state={
+    items: []
+  }
+
+    getItems = async () => {
+  try{
+    const items = await fetch('http://localhost:8080/inventory');
+    const itemsJson = await items.json();
+      this.setState({
+        items: itemsJson,
+      });
+      return itemsJson;
+  
+  }catch (error) {
+        console.log(error)
+        return error
+    }
+  }
+
+
+     componentDidMount(){
+     this.getItems()
+      .then((data) => console.log(data, ' ...from SQL databse'));
+    }
   
 render() {
   
 const { classes } = this.props;
 
-const cards = this.props.items;
+const cards = this.state.items;
 
 
   return (
@@ -144,7 +168,7 @@ const cards = this.props.items;
                     </Typography>
                     
                     <div className={classes.cardContent}>                    
-                      <CountDown/>
+                      <CountDown useToken={this.props.useToken}/>
                     </div>
                   </CardContent>
 

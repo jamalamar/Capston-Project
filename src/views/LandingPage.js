@@ -40,7 +40,7 @@ class LandingPage extends Component {
 					<GridList items={this.props.items}/>
 				</div>
 				
-					<Album items={this.props.items} />
+					<Album items={this.props.items} useToken={this.props.useToken}/>
 
 				<Carousel/>
 

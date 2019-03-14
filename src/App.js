@@ -17,12 +17,9 @@ class App extends Component{
 
 	state = {
 		logged: false,
-		tokens: 0,
-		response: '',
-		items: []
-
+		tokens: 100,
+		response: ''
 	}
-
 
 	handleLogin = (response)=>{
 		this.setState({
@@ -31,44 +28,48 @@ class App extends Component{
 		})
 	}
 
+	useToken = ()=>{
+		this.setState({
+			tokens: this.state.tokens -1
+		})
+	}
 
-  getItems = async () => {
-  try{
-    const items = await fetch('http://localhost:8080/inventory');
-    const itemsJson = await items.json();
-      this.setState({
-        items: itemsJson,
-      });
-      return itemsJson;
-  
-  }catch (error) {
-        console.log(error)
-        return error
-    }
-  }
 
-     componentDidMount(){
-     this.getItems()
-      .then((data) => console.log(data, ' ...from SQL databse'));
-    }
+  handleNewUser = (event)=> {
+	   fetch('http://localhost:8080/users/new', {
+	    method: "POST",
+	    headers: {
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify({
+	      user_id: this.state.response.id,
+	      username: this.state.response.name,
+	      email: this.state.response.email,
+	      password: '',
+	    })
+	  }
+	).then(response => response.json())
 
+
+}
 
 	render(){
 		return(
-			  <Router history={hist}>
-			<>
-			    <Switch>
-			  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response}>
+		  <Router history={hist}>
+				<>
+				    <Switch>
+						  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response} tokens={this.state.tokens}>
 
-			      <Route exact path="/home/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
-			      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
-			      <Route path="/checkout/" render={(props)=> <Checkout logged={this.state.logged} response={this.state.response} />} />
-			      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
-				    </NavBar>
-			    </Switch>
-			  <Footer />
-			  </>
-			  </Router>
+						      <Route exact path="/home/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response} useToken={this.useToken}/>} />
+						      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
+						      <Route path="/checkout/" render={(props)=> <Checkout logged={this.state.logged} response={this.state.response} />} />
+						      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />
+						  </NavBar>
+				    </Switch>
+				  <Footer />
+				</>
+		  </Router>
 		)
 	}
 }

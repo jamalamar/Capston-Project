@@ -54,8 +54,9 @@ class CountDown extends Component {
     this.setState({ 
       seconds: 11,
       price: Math.round((this.state.price + 0.01) * 1e12) / 1e12
-    })}
-  }
+    })
+  }}
+
 
   countDown() {
     // Remove one second, set state so a re-render happens.
@@ -85,7 +86,7 @@ class CountDown extends Component {
 
                 <p style={{margin: '0'}}>{this.state.time.s}</p>
               <div>
-                {this.timer == 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={this.newBid}>Add Bid</Button>}
+                {this.timer == 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={()=>{this.newBid(); this.props.useToken();}}>Add Bid</Button>}
               </div>
 
             </div>
