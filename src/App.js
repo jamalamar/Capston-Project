@@ -7,6 +7,7 @@ import { Router, Route, Switch} from "react-router-dom";
 import LandingPage from "./views/LandingPage.js";
 import ProfilePage from "./views/ProfilePage.js";
 import ShopPage from "./views/ShopPage.js";
+import Checkout from './views/Checkout.js'
 import NavBar from './Components/navbar.js';
 import Footer from './Components/footer.js';
 
@@ -58,6 +59,7 @@ class App extends Component{
 			  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response} />
 			  <Router history={hist}>
 			    <Switch>
+			      <Route path="/checkout/" render={(props)=> <Checkout logged={this.state.logged} response={this.state.response} />} />
 			      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
 			      <Route path="/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response}/>} />
 			      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />

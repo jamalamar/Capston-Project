@@ -11,6 +11,8 @@ import StarIcon from '@material-ui/icons/StarBorder';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+import Checkout from './Checkout.js'
+
 
 const styles = theme => ({
   '@global': {
@@ -105,7 +107,7 @@ function Pricing(props) {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Pricing
+            Token Store
           </Typography>
           <Typography variant="h6" align="center" color="textSecondary" component="p">
             With Tokens you can place new bids, remember to have enough Tokens for each Auction!
@@ -145,9 +147,9 @@ function Pricing(props) {
                   ))}
                 </CardContent>
                 <CardActions className={classes.cardActions}>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary">
+                  <a href="/checkout"><Button fullWidth variant={tier.buttonVariant} color="primary">
                     {tier.buttonText}
-                  </Button>
+                  </Button></a>
                 </CardActions>
               </Card>
             </Grid>

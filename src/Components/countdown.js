@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import Sold from '../assets/sold.png'
+import Typography from '@material-ui/core/Typography';
+import Sold from '../assets/sold.png';
 
 
 const imgStyle = {
-  width: '150px', 
-  height: '150px',
+  width: '100px', 
+  height: '100px',
+  opacity: '1'
 }
 
 
@@ -73,7 +75,7 @@ class CountDown extends Component {
 
     return(
       <div style={{'font-size': '25px'}}>
-        <div style={{color: 'green'}}>
+        <div style={{color: 'green', margin: '0'}}>
             ${this.state.price}
         </div>
           
@@ -81,7 +83,7 @@ class CountDown extends Component {
             this.state.time.s == 0 ? <img src={Sold} style={imgStyle}/> : 
             <div>
 
-                <p>{this.state.time.s}</p>
+                <p style={{margin: '0'}}>{this.state.time.s}</p>
               <div>
                 {this.timer == 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={this.newBid}>Add Bid</Button>}
               </div>
