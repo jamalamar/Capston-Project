@@ -26,9 +26,15 @@ class App extends Component{
 			logged: true,
 			response: response
 		})
-
-
 	}
+
+
+	handleChange = (event) => {
+       this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
+
 
 	useToken = ()=>{
 		this.setState({
@@ -38,7 +44,47 @@ class App extends Component{
 
 
   handleNewUser = (event)=> {
-	   fetch('http://localhost:8080/users/new', {
+	   fetch('http://localhost:8080/users/new/user', {
+	    method: "POST",
+	    headers: {
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify({
+	      user_id: '',
+	      username: '',
+	      email: '',
+	      password: '',
+	    })
+	  }
+	).then(response => response.json())
+}
+
+
+  handleNewShipping = (event)=> {
+	   fetch('http://localhost:8080/users/new/shipping', {
+	    method: "POST",
+	    headers: {
+	      'Accept': 'application/json',
+	      'Content-Type': 'application/json'
+	    },
+	    body: JSON.stringify({
+	      user_id: '',
+	      first_name: '',
+	      last_name: '',
+	      address_one: '',
+	      address_two: '',
+	      city: '',
+	      state: '',
+	      zip: '',
+	      country: ''
+	    })
+	  }
+	).then(response => response.json())
+}
+
+  handleNewPayment = (event)=> {
+	   fetch('http://localhost:8080/users/new/payment', {
 	    method: "POST",
 	    headers: {
 	      'Accept': 'application/json',
@@ -46,13 +92,15 @@ class App extends Component{
 	    },
 	    body: JSON.stringify({
 	      user_id: this.state.response.id,
-	      username: this.state.response.name,
-	      email: this.state.response.email,
-	      password: '',
+	      card_name: this.state.response.name,
+	      card_number: this.state.response.email,
+	      exp_date: '',
+	      cvv: ''
 	    })
 	  }
 	).then(response => response.json())
 }
+
 
 	render(){
 		return(

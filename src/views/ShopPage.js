@@ -99,6 +99,7 @@ const tiers = [
 ];
 
 function Pricing(props) {
+
   const { classes } = props;
 
   return (

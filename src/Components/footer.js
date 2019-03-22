@@ -32,6 +32,10 @@ const styles = theme => ({
     borderTop: `1px solid ${theme.palette.divider}`,
     padding: `${theme.spacing.unit * 6}px 0`,
   },
+  links: {
+    textDecoration: 'none',
+    color: 'inherit',
+  }
 });
 
 const footers = [
@@ -69,7 +73,7 @@ function Footer(props) {
               </Typography>
               {footer.description.map(item => (
                 <Typography key={item} variant="subtitle1" color="textSecondary">
-                  {item}
+                  <a href="#" className={classes.links}>{item}</a>
                 </Typography>
               ))}
             </Grid>
