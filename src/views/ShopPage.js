@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,6 @@ import StarIcon from '@material-ui/icons/StarBorder';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-import Checkout from './Checkout.js'
 
 
 const styles = theme => ({

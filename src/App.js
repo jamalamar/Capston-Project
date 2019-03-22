@@ -26,6 +26,8 @@ class App extends Component{
 			logged: true,
 			response: response
 		})
+
+
 	}
 
 	useToken = ()=>{
@@ -50,8 +52,6 @@ class App extends Component{
 	    })
 	  }
 	).then(response => response.json())
-
-
 }
 
 	render(){
@@ -59,9 +59,9 @@ class App extends Component{
 		  <Router history={hist}>
 				<>
 				    <Switch>
-						  <NavBar handleLogin={this.handleLogin} logged={this.state.logged} response={this.state.response} tokens={this.state.tokens}>
+						  <NavBar handleLogin={this.handleLogin} handleNewUser={this.handleNewUser} logged={this.state.logged} response={this.state.response} tokens={this.state.tokens}>
 
-						      <Route exact path="/home/" render={(props)=> <LandingPage handleLogin={this.handleLogin} items={this.state.items} logged={this.state.logged} response={this.state.response} useToken={this.useToken}/>} />
+						      <Route exact path="/home/" render={(props)=> <LandingPage handleLogin={this.handleLogin} handleNewUser={this.handleNewUser} items={this.state.items} logged={this.state.logged} response={this.state.response} useToken={this.useToken}/>} />
 						      <Route path="/shop/" render={(props)=> <ShopPage logged={this.state.logged} response={this.state.response} />} />
 						      <Route path="/checkout/" render={(props)=> <Checkout logged={this.state.logged} response={this.state.response} />} />
 						      <Route path="/profile/" render={(props)=> <ProfilePage logged={this.state.logged} response={this.state.response} />} />

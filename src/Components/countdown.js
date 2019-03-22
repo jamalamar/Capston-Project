@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import Sold from '../assets/sold.png';
 
 
@@ -44,7 +43,7 @@ class CountDown extends Component {
   }
 
   startTimer() {
-    if (this.timer == 0 && this.state.seconds > 0) {
+    if (this.timer === 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
@@ -67,7 +66,7 @@ class CountDown extends Component {
     });
     
     // Check if we're at zero.
-    if (seconds == 0) { 
+    if (seconds === 0) { 
       clearInterval(this.timer);
     }
   }
@@ -81,13 +80,15 @@ class CountDown extends Component {
         </div>
           
           {
-            this.state.time.s == 0 ? <img src={Sold} style={imgStyle}/> : 
+            this.state.time.s === 0 ? <img src={Sold} alt="Sold" style={imgStyle}/> : 
             <div>
 
                 <p style={{margin: '0'}}>{this.state.time.s}</p>
+                
               <div>
-                {this.timer == 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={()=>{this.newBid(); this.props.useToken();}}>Add Bid</Button>}
+                {this.timer === 0 ? <Button onClick={this.startTimer}>Start</Button> : <Button onClick={()=>{this.newBid(); this.props.useToken();}}>Add Bid</Button>}
               </div>
+
 
             </div>
           }

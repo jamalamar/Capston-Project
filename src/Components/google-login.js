@@ -12,7 +12,7 @@ import GoogleLogin from 'react-google-login';
     return (
 
       <GoogleLogin
-        clientId="" //CLIENTID NOT CREATED YET
+        clientId="303023437973-54akvpila60n4klom26bq8dgno9kg9bi.apps.googleusercontent.com" //CLIENTID NOT CREATED YET
         buttonText="LOGIN WITH GOOGLE"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}

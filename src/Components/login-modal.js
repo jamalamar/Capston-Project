@@ -66,7 +66,7 @@ class SimpleModal extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-            <LoginPage style={getModalStyle()} className={classes.paper} handleLogin={this.props.handleLogin}/>
+            <LoginPage style={getModalStyle()} className={classes.paper} handleLogin={this.props.handleLogin} handleNewUser={this.props.handleNewUser}/>
         </Modal>
       </div>
     );

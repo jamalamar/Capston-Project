@@ -22,12 +22,12 @@ class ResponsiveCarousel extends Component {
                 padding: '10px'}}
         >
         
-        <img src={pic1}/>
-        <img src={pic2}/>
-        <img src={pic3}/>
-        <img src={pic4}/>
-        <img src={pic5}/>
-        <img src={pic6}/>
+        <img src={pic1} alt="Ad"/>
+        <img src={pic2} alt="Ad"/>
+        <img src={pic3} alt="Ad"/>
+        <img src={pic4} alt="Ad"/>
+        <img src={pic5} alt="Ad"/>
+        <img src={pic6} alt="Ad"/>
       </Carousel>
     );
   }

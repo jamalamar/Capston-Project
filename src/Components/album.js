@@ -180,7 +180,7 @@ const cards = this.state.items;
                       
                         <Grid className={classes.modalGrid}>
                           <div>
-                            <img src={item.item_img} style={{width: '250px', height: '250px'}}/>                                                
+                            <img src={item.item_img} alt="Item" style={{width: '250px', height: '250px'}}/>                                                
                             <Typography variant="h6" component="h4">Value: ${item.item_price}</Typography>                        
                           </div>
 
